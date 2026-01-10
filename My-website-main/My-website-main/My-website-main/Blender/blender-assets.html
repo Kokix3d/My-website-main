@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blender Assets | KOKI VFX & 3D</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <aside class="left-sidebar">
+      <div class="sidebar-header">
+        <h3>KOKI<span>VFX & 3D</span></h3>
+        <p class="tagline">Premium VFX & 3D Assets</p>
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul class="sidebar-menu">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../Membership/membership.html">Membership</a></li>
+
+          <!-- Blender Dropdown -->
+          <li class="dropdown-item active">
+            <a href="blender.html" class="dropdown-toggle">
+              Blender
+                            <i class="fas fa-chevron-right chevron"></i>
+              </a>
+            <ul class="submenu open">
+              <li><a href="../Blender/blender-addons.html">Add-ons</a></li>
+              <li><a href="../Blender/blender-assets.html">Assets</a></li>
+              <li><a href="../Blender/blender-3d.html">3D Models</a></li>
+            </ul>
+          </li>
+
+          <!-- Unreal Dropdown -->
+          <li class="dropdown-item">
+            <a href="#" class="dropdown-toggle" onclick="toggleSubmenu(event)">
+              Unreal
+                            <i class="fas fa-chevron-right chevron"></i>
+              </a>
+            <ul class="submenu">
+              <li><a href="../Unreal/unreal-plugins.html">Plugins</a></li>
+              <li><a href="../Unreal/unreal-assets.html">Assets</a></li>
+              <li><a href="../Unreal/unreal-3d.html">3D Models</a></li>
+            </ul>
+          </li>
+
+          <!-- After Effects Dropdown -->
+          <li class="dropdown-item">
+            <a href="#" class="dropdown-toggle" onclick="toggleSubmenu(event)">
+              After Effects
+                            <i class="fas fa-chevron-right chevron"></i>
+              </a>
+            <ul class="submenu">
+              <li><a href="../ae/ae-templates.html">Templates</a></li>
+              <li><a href="../ae/ae-presets.html">Presets</a></li>
+              <li><a href="../ae/ae-assets.html">Assets</a></li>
+            </ul>
+          </li>          <!-- Premiere Pro Dropdown -->
+          <li class="dropdown-item">
+            <a href="#" class="dropdown-toggle" onclick="toggleSubmenu(event)">
+              Premiere Pro
+              <i class="fas fa-chevron-right chevron"></i>
+            </a>
+            <ul class="submenu">
+              <li><a href="../pr/pp-templates.html">Templates</a></li>
+              <li><a href="../pr/pp-presets.html">Presets</a></li>
+              <li><a href="../pr/pp-assets.html">Assets</a></li>
+            </ul>
+          </li>
+
+          <!-- Photoshop Dropdown -->
+          <li class="dropdown-item">
+            <a href="#" class="dropdown-toggle" onclick="toggleSubmenu(event)">
+              Photoshop
+                            <i class="fas fa-chevron-right chevron"></i>
+              </a>
+            <ul class="submenu">
+              <li><a href="../ps/psd-templates.html">PSD Templates</a></li>
+              <li><a href="../ps/ps-brushes.html">Brushes</a></li>
+              <li><a href="../ps/ps-actions.html">Actions</a></li>
+            </ul>
+          </li>
+
+                    <!-- Houdini Single Item -->
+          <li>
+            <a href="../Houdini/houdini.html">
+              Houdini
+            </a>
+          </li>
+
+                    <!-- Website Templates Single Item -->
+          <li>
+            <a href="../web template/website-templates.html">
+              Website Templates
+            </a>
+          </li>
+
+          <!-- Software Single Item -->
+          <li>
+            <a href="../Softwear/software.html">
+              Software
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Discord Card -->
+      <div class="discord-card">
+        <div class="discord-logo">
+          <i class="fab fa-discord"></i>
+        </div>
+        <div class="discord-status">
+          <span class="status-dot"></span>
+          <span class="status-text"><span class="online-count">129</span> Online</span>
+        </div>
+        <div class="discord-total-members">
+          <span class="total-count">1,234</span> Members
+        </div>
+        <h4 class="discord-title">Join Our Discord</h4>
+        <p class="discord-desc">Chat, get support, and connect with the community.</p>
+        <a href="https://discord.com/invite/PCZU4fM27s" class="discord-btn" target="_blank">
+          <i class="fab fa-discord"></i>
+          Join Now
+        </a>
+      </div>
+
+  <script src="../script.js"></script>
+  <script>
+    // Pagination variables
+    let currentPage = 1;
+    const itemsPerPage = 30; // 30 items per page
+    let assetProducts = [];
+    
+    // Filter products for Blender Assets category
+    document.addEventListener("DOMContentLoaded", function() {
+      // Get Blender Assets products by category and reverse to show newest first
+      assetProducts = products.filter(p => p.category === "blender-assets").reverse();
+      
+      if (assetProducts.length === 0) {
+        document.getElementById("productsGrid").innerHTML = '<p style="color: rgba(255,255,255,0.7); text-align: center; padding: 40px;">No products available yet.</p>';
+        return;
+      }
+      
+      displayPage(1);
+      createPagination();
+    });
+    
+    function displayPage(page) {
+      currentPage = page;
+      const grid = document.getElementById("productsGrid");
+      grid.innerHTML = "";
+      
+      const startIndex = (page - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const pageItems = assetProducts.slice(startIndex, endIndex);
+      
+      pageItems.forEach((p) => {
+        const card = document.createElement("div");
+        card.classList.add("product-card");
+        card.style.cursor = "pointer";
+        card.onclick = function() {
+          window.location.href = `asset-detail.html?id=${p.id}`;
+        };
+        
+        const img = document.createElement("img");
+        img.src = "../" + p.image;
+        img.alt = p.title;
+        img.loading = "lazy";
+        img.onerror = function() { this.src = "../backgrounds/theme.jpg"; };
+        
+        const info = document.createElement("div");
+        info.classList.add("product-info");
+        info.innerHTML = `<h3>${p.title}</h3>`;
+        
+        card.appendChild(img);
+        card.appendChild(info);
+        grid.appendChild(card);
+      });
+      
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    function createPagination() {
+      const totalPages = Math.ceil(assetProducts.length / itemsPerPage);
+      const paginationDiv = document.getElementById("pagination");
+      
+      if (totalPages <= 1) {
+        paginationDiv.style.display = 'none';
+        return;
+      }
+      
+      updatePaginationButtons(totalPages);
+    }
+    
+    function updatePaginationButtons(totalPages) {
+      const paginationDiv = document.getElementById("pagination");
+      paginationDiv.innerHTML = '';
+      
+      // Previous button
+      const prevBtn = createPageButton('< Prev', currentPage - 1, currentPage === 1);
+      paginationDiv.appendChild(prevBtn);
+      
+      // Page numbers with ellipsis
+      const maxVisible = 5;
+      let startPage = Math.max(1, currentPage - 2);
+      let endPage = Math.min(totalPages, startPage + maxVisible - 1);
+      
+      if (endPage - startPage < maxVisible - 1) {
+        startPage = Math.max(1, endPage - maxVisible + 1);
+      }
+      
+      if (startPage > 1) {
+        paginationDiv.appendChild(createPageButton('1', 1));
+        if (startPage > 2) {
+          const ellipsis = document.createElement('span');
+          ellipsis.textContent = '...';
+          ellipsis.style.color = 'rgba(255,255,255,0.5)';
+          ellipsis.style.padding = '8px';
+          paginationDiv.appendChild(ellipsis);
+        }
+      }
+      
+      for (let i = startPage; i <= endPage; i++) {
+        paginationDiv.appendChild(createPageButton(i, i));
+      }
+      
+      if (endPage < totalPages) {
+        if (endPage < totalPages - 1) {
+          const ellipsis = document.createElement('span');
+          ellipsis.textContent = '...';
+          ellipsis.style.color = 'rgba(255,255,255,0.5)';
+          ellipsis.style.padding = '8px';
+          paginationDiv.appendChild(ellipsis);
+        }
+        paginationDiv.appendChild(createPageButton(totalPages, totalPages));
+      }
+      
+      // Next button
+      const nextBtn = createPageButton('Next >', currentPage + 1, currentPage === totalPages);
+      paginationDiv.appendChild(nextBtn);
+    }
+    
+    function createPageButton(text, page, disabled = false) {
+      const button = document.createElement('button');
+      button.textContent = text;
+      button.style.cssText = `
+        padding: 10px 16px;
+        background: ${currentPage === page ? '#6b46ff' : 'rgba(255, 255, 255, 0.08)'};
+        color: ${disabled ? 'rgba(255,255,255,0.3)' : '#fff'};
+        border: 1px solid ${currentPage === page ? '#6b46ff' : 'rgba(255, 255, 255, 0.15)'};
+        border-radius: 8px;
+        cursor: ${disabled ? 'not-allowed' : 'pointer'};
+        font-size: 14px;
+        font-weight: ${currentPage === page ? 'bold' : 'normal'};
+        transition: all 0.3s ease;
+        min-width: 40px;
+      `;
+      
+      if (!disabled) {
+        button.onmouseover = function() {
+          if (currentPage !== page) {
+            this.style.background = 'rgba(91, 184, 255, 0.2)';
+            this.style.borderColor = '#5db8ff';
+          }
+        };
+        button.onmouseout = function() {
+          if (currentPage !== page) {
+            this.style.background = 'rgba(255, 255, 255, 0.08)';
+            this.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+          }
+        };
+        button.onclick = function() {
+          displayPage(page);
+          createPagination();
+        };
+      }
+      
+      return button;
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+

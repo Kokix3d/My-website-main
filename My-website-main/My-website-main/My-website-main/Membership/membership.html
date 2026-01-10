@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Membership | KOKI VFX & 3D</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <aside class="left-sidebar">
+      <div class="sidebar-header">
+        <h3>KOKI<span>VFX & 3D</span></h3>
+        <p class="tagline">Premium VFX & 3D Assets</p>
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul class="sidebar-menu">
+          <li><a href="../index.html">Home</a></li>
+          <li class="active"><a href="membership.html">Membership</a></li>
+
+          <!-- Blender Dropdown -->
+          <li class="dropdown-item">
+            <a href="#" class="dropdown-toggle" onclick="toggleSubmenu(event)">
+              Blender
+              <i class="fas fa-chevron-right chevron"></i>
+            </a>
+            <ul class="submenu">
+              <li><a href="../Blender/blender-addons.html">Add-ons</a></li>
+              <li><a href="../Blender/blender-assets.html">Assets</a></li>
+              <li><a href="../Blender/blender-3d.html">3D Models</a></li>
+            </ul>
+          </li>
+
+          <!-- Unreal Dropdown -->
+          <li class="dropdown-item">
+            <a href="#" class="dropdown-toggle" onclick="toggleSubmenu(event)">
+              Unreal
+              <i class="fas fa-chevron-right chevron"></i>
+            </a>
+            <ul class="submenu">
+              <li><a href="../Unreal/unreal-plugins.html">Plugins</a></li>
+              <li><a href="../Unreal/unreal-assets.html">Assets</a></li>
+              <li><a href="../Unreal/unreal-3d.html">3D Models</a></li>
+            </ul>
+          </li>
+
+          <!-- After Effects Dropdown -->
+          <li class="dropdown-item">
+            <a href="#" class="dropdown-toggle" onclick="toggleSubmenu(event)">
+              After Effects
+              <i class="fas fa-chevron-right chevron"></i>
+            </a>
+            <ul class="submenu">
+              <li><a href="../ae/ae-templates.html">Templates</a></li>
+              <li><a href="../ae/ae-presets.html">Presets</a></li>
+              <li><a href="../ae/ae-assets.html">Assets</a></li>
+            </ul>
+          </li>
+
+          <!-- Premiere Pro Dropdown -->
+          <li class="dropdown-item">
+            <a href="#" class="dropdown-toggle" onclick="toggleSubmenu(event)">
+              Premiere Pro
+              <i class="fas fa-chevron-right chevron"></i>
+            </a>
+            <ul class="submenu">
+              <li><a href="../pr/pp-templates.html">Templates</a></li>
+              <li><a href="../pr/pp-presets.html">Presets</a></li>
+              <li><a href="../pr/pp-assets.html">Assets</a></li>
+            </ul>
+          </li>
+
+          <!-- Photoshop Dropdown -->
+          <li class="dropdown-item">
+            <a href="#" class="dropdown-toggle" onclick="toggleSubmenu(event)">
+              Photoshop
+              <i class="fas fa-chevron-right chevron"></i>
+            </a>
+            <ul class="submenu">
+              <li><a href="../ps/psd-templates.html">PSD Templates</a></li>
+              <li><a href="../ps/ps-brushes.html">Brushes</a></li>
+              <li><a href="../ps/ps-actions.html">Actions</a></li>
+            </ul>
+          </li>
+
+          <!-- Houdini Single Item -->
+          <li>
+            <a href="../Houdini/houdini.html">
+              Houdini
+            </a>
+          </li>
+
+          <!-- Software Single Item -->
+          <li>
+            <a href="../Softwear/software.html">
+              Software
+            </a>
+          </li>
+
+          <!-- Website Templates Single Item -->
+          <li>
+            <a href="../web template/website-templates.html">
+              Website Templates
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Discord Card -->
+      <div class="discord-card">
+        <div class="discord-logo">
+          <i class="fab fa-discord"></i>
+        </div>
+        <div class="discord-status">
+          <span class="status-dot"></span>
+          <span class="status-text"><span class="online-count">129</span> Online</span>
+        </div>
+        <div class="discord-total-members">
+          <span class="total-count">1,234</span> Members
+        </div>
+        <h4 class="discord-title">Join Our Discord</h4>
+        <p class="discord-desc">Chat, get support, and connect with the community.</p>
+        <a href="https://discord.com/invite/PCZU4fM27s" class="discord-btn" target="_blank">
+          <i class="fab fa-discord"></i>
+          Join Now
+        </a>
+      </div>
+
+  <script src="../script.js"></script>
+  <script>
+    // Display membership products from the main script
+    document.addEventListener("DOMContentLoaded", function() {
+      const grid = document.getElementById("productsGrid");
+      if (!grid) return;
+      
+      grid.innerHTML = "";
+      
+      // Use membershipProducts from script.js
+      if (typeof membershipProducts !== 'undefined') {
+        membershipProducts.forEach((p) => {
+          const card = document.createElement("div");
+          card.classList.add("membership-card");
+          
+          // Fix image path - remove 'Membership/' prefix since we're already in Membership folder
+          let imagePath = p.image;
+          if (imagePath.startsWith('Membership/')) {
+            imagePath = imagePath.replace('Membership/', '');
+          }
+          
+          // Fix download link path - remove 'Membership/' prefix for links within this folder
+          let downloadLink = p.download;
+          if (downloadLink.startsWith('Membership/')) {
+            downloadLink = downloadLink.replace('Membership/', '');
+          }
+          
+          card.innerHTML = `
+            <div class="card-image">
+              <img src="${imagePath}" alt="${p.title}" loading="lazy" onerror="this.src='../backgrounds/theme.jpg'">
+            </div>
+            <div class="card-body">
+              <p class="product-category">${p.category}</p>
+              <h3 class="product-title">${p.title}</h3>
+              <div class="price-section">
+                <span class="current-price">${p.price}</span>
+              </div>
+              <a href="${downloadLink}" class="buy-btn">Buy It Now</a>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

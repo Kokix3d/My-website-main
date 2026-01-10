@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KOKI VFX & 3D</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <aside class="left-sidebar">
+      <div class="sidebar-header">
+        <h3>KOKI<span>VFX & 3D</span></h3>
+        <p class="tagline">Premium VFX & 3D Assets</p>
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul class="sidebar-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Membership/membership.html">Membership</a></li>
+
+          <!-- Blender Dropdown -->
+          <li class="dropdown-item">
+            <a href="#" class="dropdown-toggle" onclick="toggleSubmenu(event)">
+              Blender
+                            <i class="fas fa-chevron-right chevron"></i>
+              </a>
+            <ul class="submenu">
+              <li><a href="Blender/blender-addons.html">Add-ons</a></li>
+              <li><a href="Blender/blender-assets.html">Assets</a></li>
+              <li><a href="Blender/blender-3d.html">3D Models</a></li>
+            </ul>
+          </li>
+
+          <!-- Unreal Dropdown -->
+          <li class="dropdown-item">
+            <a href="#" class="dropdown-toggle" onclick="toggleSubmenu(event)">
+              Unreal
+                            <i class="fas fa-chevron-right chevron"></i>
+              </a>
+            <ul class="submenu">
+              <li><a href="Unreal/unreal-plugins.html">Plugins</a></li>
+              <li><a href="Unreal/unreal-assets.html">Assets</a></li>
+              <li><a href="Unreal/unreal-3d.html">3D Models</a></li>
+            </ul>
+          </li>
+
+          <!-- After Effects Dropdown -->
+          <li class="dropdown-item">
+            <a href="#" class="dropdown-toggle" onclick="toggleSubmenu(event)">
+              After Effects
+                            <i class="fas fa-chevron-right chevron"></i>
+              </a>
+            <ul class="submenu">
+              <li><a href="ae/ae-templates.html">Templates</a></li>
+              <li><a href="ae/ae-presets.html">Presets</a></li>
+              <li><a href="ae/ae-assets.html">Assets</a></li>
+            </ul>
+          </li>          <!-- Premiere Pro Dropdown -->
+          <li class="dropdown-item">
+            <a href="#" class="dropdown-toggle" onclick="toggleSubmenu(event)">
+              Premiere Pro
+              <i class="fas fa-chevron-right chevron"></i>
+            </a>
+            <ul class="submenu">
+              <li><a href="pr/pp-templates.html">Templates</a></li>
+              <li><a href="pr/pp-presets.html">Presets</a></li>
+              <li><a href="pr/pp-assets.html">Assets</a></li>
+            </ul>
+          </li>
+
+          <!-- Photoshop Dropdown -->
+          <li class="dropdown-item">
+            <a href="#" class="dropdown-toggle" onclick="toggleSubmenu(event)">
+              Photoshop
+                            <i class="fas fa-chevron-right chevron"></i>
+              </a>
+            <ul class="submenu">
+              <li><a href="ps/psd-templates.html">PSD Templates</a></li>
+              <li><a href="ps/ps-brushes.html">Brushes</a></li>
+              <li><a href="ps/ps-actions.html">Actions</a></li>
+            </ul>
+          </li>
+
+          <!-- Houdini Single Item -->
+          <li>
+            <a href="Houdini/houdini.html">
+              Houdini
+            </a>
+          </li>
+
+          <!-- Software Single Item -->
+          <li>
+            <a href="Softwear/software.html">
+              Software
+            </a>
+          </li>
+
+          <!-- Website Templates Single Item -->
+          <li>
+            <a href="web template/website-templates.html">
+              Website Templates
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Discord Card -->
+      <div class="discord-card">
+        <div class="discord-logo">
+          <i class="fab fa-discord"></i>
+        </div>
+        <div class="discord-status">
+          <span class="status-dot"></span>
+          <span class="status-text"><span class="online-count">129</span> Online</span>
+        </div>
+        <div class="discord-total-members">
+          <span class="total-count">1,234</span> Members
+        </div>
+        <h4 class="discord-title">Join Our Discord</h4>
+        <p class="discord-desc">Chat, get support, and connect with the community.</p>
+        <a href="https://discord.com/invite/PCZU4fM27s" class="discord-btn" target="_blank">
+          <i class="fab fa-discord"></i>
+          Join Now
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="main-wrapper">
+      <header class="header">
+        <div class="search-box">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" placeholder="Search for assets, templates, plugins...">
+          <button><i class="fas fa-search"></i></button>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <!-- Products Grid for Search Results -->
+        <div id="productsGrid" class="products-grid" style="display: none;"></div>
+        
+        <div id="homePage">
+          <!-- Main Horizontal Slideshow -->
+          <div class="slideshow-container main-slideshow">
+            <div class="slide fade">
+              <img src="Membership/Image/adobe creative cloud.jpg" alt="Adobe Creative Cloud">
+            </div>
+            <div class="slide fade">
+              <img src="Membership/Image/ChatGPT-5 Plus – Private Access.png" alt="ChatGPT-5 Plus">
+            </div>
+            <div class="slide fade">
+              <img src="Membership/Image/Netflix.jpg" alt="Netflix Premium">
+            </div>
+          </div>
+
+          <!-- Bottom Two Slideshows -->
+          <div class="bottom-slideshows">
+            <!-- Left Slideshow -->
+            <div class="slideshow-container small-slideshow" id="leftSlideshow">
+              <div class="slide-small fade-small">
+                <img src="Membership/Image/Canva.png" alt="Canva Pro">
+              </div>
+              <div class="slide-small fade-small">
+                <img src="Membership/Image/yt premium.png" alt="YouTube Premium">
+              </div>
+              <div class="slide-small fade-small">
+                <img src="Membership/Image/adobe creative cloud.jpg" alt="Adobe Creative Cloud">
+              </div>
+            </div>
+
+            <!-- Right Slideshow -->
+            <div class="slideshow-container small-slideshow" id="rightSlideshow">
+              <div class="slide-small fade-small">
+                <img src="Membership/Image/Netflix.jpg" alt="Netflix Premium">
+              </div>
+              <div class="slide-small fade-small">
+                <img src="Membership/Image/ChatGPT-5 Plus – Private Access.png" alt="ChatGPT-5 Plus">
+              </div>
+              <div class="slide-small fade-small">
+                <img src="Membership/Image/Canva.png" alt="Canva Pro">
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+

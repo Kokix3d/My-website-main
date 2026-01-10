@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Templates | KOKI VFX & 3D</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <aside class="left-sidebar">
+      <div class="sidebar-header">
+        <h3>KOKI<span>VFX & 3D</span></h3>
+        <p class="tagline">Premium VFX & 3D Assets</p>
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul class="sidebar-menu">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../Membership/membership.html">Membership</a></li>
+
+          <!-- Blender Dropdown -->
+          <li class="dropdown-item">
+            <a href="blender.html" class="dropdown-toggle">
+              Blender
+                            <i class="fas fa-chevron-right chevron"></i>
+              </a>
+            <ul class="submenu">
+              <li><a href="../Blender/blender-addons.html">Add-ons</a></li>
+              <li><a href="../Blender/blender-assets.html">Assets</a></li>
+              <li><a href="../Blender/blender-3d.html">3D Models</a></li>
+            </ul>
+          </li>
+
+          <!-- Unreal Dropdown -->
+          <li class="dropdown-item">
+            <a href="unreal.html" class="dropdown-toggle">
+              Unreal
+                            <i class="fas fa-chevron-right chevron"></i>
+              </a>
+            <ul class="submenu">
+              <li><a href="../Unreal/unreal-plugins.html">Plugins</a></li>
+              <li><a href="../Unreal/unreal-assets.html">Assets</a></li>
+              <li><a href="../Unreal/unreal-3d.html">3D Models</a></li>
+            </ul>
+          </li>
+
+          <!-- After Effects Dropdown -->
+          <li class="dropdown-item">
+            <a href="after-effects.html" class="dropdown-toggle">
+              After Effects
+                            <i class="fas fa-chevron-right chevron"></i>
+              </a>
+            <ul class="submenu">
+              <li><a href="../ae/ae-templates.html">Templates</a></li>
+              <li><a href="../ae/ae-presets.html">Presets</a></li>
+              <li><a href="../ae/ae-assets.html">Assets</a></li>
+            </ul>
+          </li>          <!-- Premiere Pro Dropdown -->
+          <li class="dropdown-item">
+            <a href="#" class="dropdown-toggle" onclick="toggleSubmenu(event)">
+              Premiere Pro
+              <i class="fas fa-chevron-right chevron"></i>
+            </a>
+            <ul class="submenu">
+              <li><a href="../pr/pp-templates.html">Templates</a></li>
+              <li><a href="../pr/pp-presets.html">Presets</a></li>
+              <li><a href="../pr/pp-assets.html">Assets</a></li>
+            </ul>
+          </li>
+
+          <!-- Photoshop Dropdown -->
+          <li class="dropdown-item">
+            <a href="photoshop.html" class="dropdown-toggle">
+              Photoshop
+                            <i class="fas fa-chevron-right chevron"></i>
+              </a>
+            <ul class="submenu">
+              <li><a href="../ps/psd-templates.html">PSD Templates</a></li>
+              <li><a href="../ps/ps-brushes.html">Brushes</a></li>
+              <li><a href="../ps/ps-actions.html">Actions</a></li>
+            </ul>
+          </li>
+
+                    <!-- Houdini Single Item -->
+          <li>
+            <a href="../Houdini/houdini.html">
+              Houdini
+            </a>
+          </li>
+
+          <!-- Website Templates Single Item -->
+          <li class="active">
+            <a href="website-templates.html">
+              Website Templates
+            </a>
+          </li>
+
+          <!-- Software Single Item -->
+          <li>
+            <a href="../Softwear/software.html">
+              Software
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Discord Card -->
+      <div class="discord-card">
+        <div class="discord-logo">
+          <i class="fab fa-discord"></i>
+        </div>
+        <div class="discord-status">
+          <span class="status-dot"></span>
+          <span class="status-text"><span class="online-count">129</span> Online</span>
+        </div>
+        <div class="discord-total-members">
+          <span class="total-count">1,234</span> Members
+        </div>
+        <h4 class="discord-title">Join Our Discord</h4>
+        <p class="discord-desc">Chat, get support, and connect with the community.</p>
+        <a href="https://discord.com/invite/PCZU4fM27s" class="discord-btn" target="_blank">
+          <i class="fab fa-discord"></i>
+          Join Now
+        </a>
+      </div>
+
+  <script src="../script.js"></script>
+  <script>
+    // Filter products for Website Templates category
+    document.addEventListener("DOMContentLoaded", function() {
+      const grid = document.getElementById("productsGrid");
+      grid.innerHTML = "";
+      
+      // Get Website Templates products
+      const webProducts = products.filter(p => 
+        p.title.includes("Website Template") || 
+        p.description.includes("HTML template") ||
+        p.description.includes("website")
+      );
+      
+      webProducts.forEach((p) => {
+        const card = document.createElement("div");
+        card.classList.add("product-card");
+        card.innerHTML = `
+          <img src="${p.image}" alt="${p.title}">
+          <div class="product-info">
+            <h3>${p.title}</h3>
+            <p>${p.description}</p>
+            <a href="${p.download}" class="view-btn">View Details</a>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
